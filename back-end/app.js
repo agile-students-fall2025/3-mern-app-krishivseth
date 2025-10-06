@@ -78,5 +78,30 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+app.get('/about', async (req, res) => {
+  try {
+    const aboutData = {
+      title: "About Us",
+      paragraphs: [
+        "Hello! I'm Krishiv Seth, an NYU student and a passionate full-stack developer with a love for creating innovative web applications. I enjoy working with modern technologies and building solutions that make a difference.",
+        "With experience in both front-end and back-end development, I specialize in creating seamless user experiences and robust server-side applications. I'm always eager to learn new technologies and take on challenging projects.",
+        "When I'm not coding, you can find me at the gym or at the movies."
+      ],
+      imageUrl: "/profile.jpeg"
+    }
+    
+    res.json({
+      data: aboutData,
+      status: 'all good',
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve about data',
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
